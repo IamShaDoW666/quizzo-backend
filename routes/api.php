@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UserController;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 }); 
 
 Route::get('/users', function(){
-    return User::all();
+    return  UserResource::collection(User::all());
 });
 
 Route::delete('/user/{user}', function(User $user){
